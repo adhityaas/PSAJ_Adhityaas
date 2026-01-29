@@ -1,220 +1,246 @@
-/* Import Google Fonts */
 @import url('https://fonts.googleapis.com');
 
 :root {
-  --primary-color: #8b0000; /* Merah Marun - Kesan Berani & Sejarah */
-  --secondary-color: #d4af37; /* Emas - Kesan Klasik & Berharga */
-  --dark-text: #2c3e50;
-  --light-bg: #fdfaf5; /* Putih Tulang/Kertas Tua */
+    --primary: #4a1c1c;    /* Deep Maroon/Terracotta */
+    --secondary: #d4af37;  /* Muted Gold */
+    --accent: #2c3e50;     /* Navy PKN */
+    --bg: #fcfbf7;         /* Creamy White */
+    --card-bg: #ffffff;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--light-bg);
-  color: var(--dark-text);
-  scroll-behavior: smooth;
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg);
+    color: var(--accent);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Navigasi Formal */
+/* --- NAVIGATION --- */
 header {
-  background: #fff;
-  border-bottom: 3px solid var(--primary-color);
-  padding: 1rem 5%;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.2rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: bold;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
 }
 
 .logo span {
-  color: var(--primary-color);
+    color: var(--primary);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
 }
 
 .nav-links {
-  display: flex;
-  list-style: none;
+    display: flex;
+    gap: 30px;
+    list-style: none;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: var(--dark-text);
-  font-weight: 600;
-  margin-left: 25px;
-  transition: 0.3s;
-  font-size: 0.9rem;
-  text-transform: uppercase;
+    text-decoration: none;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: var(--transition);
+    opacity: 0.7;
 }
 
 .nav-links a:hover {
-  color: var(--primary-color);
+    opacity: 1;
+    color: var(--primary);
 }
 
-/* Hero Section - Tema Kebangsaan */
+/* --- HERO SECTION --- */
 .hero-kelompok {
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-              url('https://images.unsplash.com'); /* Gambar Gedung/Sejarah */
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  border-bottom: 8px solid var(--secondary-color);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(44, 62, 80, 0.4), rgba(74, 28, 28, 0.4)), 
+                url('https://images.unsplash.com');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+    color: white;
+}
+
+.hero-overlay p {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    font-weight: 300;
 }
 
 .hero-overlay h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 4rem;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 5rem);
+    margin-bottom: 1.5rem;
+    line-height: 1;
 }
 
 .btn-cek {
-  display: inline-block;
-  padding: 12px 35px;
-  background: var(--primary-color);
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border: 2px solid var(--secondary-color);
-  border-radius: 5px;
-  transition: 0.3s;
+    padding: 15px 40px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 .btn-cek:hover {
-  background: var(--secondary-color);
-  color: #000;
+    background: white;
+    color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* Container & Title */
+/* --- SECTION GENERAL --- */
 .section-container {
-  padding: 100px 10%;
+    padding: 100px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .section-title {
-  font-family: 'Playfair Display', serif;
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 60px;
-  color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+    position: relative;
 }
 
-/* Card Anggota - Gaya Klasik */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--secondary);
+    margin: 15px auto;
+}
+
+/* --- CARDS ANGGOTA --- */
 .kelompok-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    width: 100%;
 }
 
 .kelompok-card {
-  background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 0; /* Kotak lebih formal */
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: 0.4s;
-  box-shadow: 5px 5px 0px var(--secondary-color); /* Shadow kaku yang artistik */
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .kelompok-card:hover {
-  transform: translate(-5px, -5px);
-  box-shadow: 10px 10px 0px var(--primary-color);
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.card-img {
+    height: 320px;
+    overflow: hidden;
 }
 
 .card-img img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  filter: sepia(30%); /* Efek foto lama sedikit */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.kelompok-card:hover img {
+    transform: scale(1.1);
 }
 
 .card-info {
-  padding: 15px;
-  border-top: 2px solid var(--secondary-color);
+    padding: 25px;
 }
 
-/* PDF & Video Container */
-.pdf-container, .video-container {
-  width: 100%;
-  max-width: 900px;
-  height: 550px;
-  border: 5px solid #fff;
-  outline: 2px solid var(--secondary-color);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+.card-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
 }
 
-.content-desc, .video-desc {
-  margin-top: 20px;
-  font-style: italic;
-  color: #666;
+.card-info p {
+    font-size: 0.9rem;
+    color: #888;
+    letter-spacing: 1px;
 }
 
-/* Footer Formal */
-footer {
-  background: #1a1a1a;
-  color: var(--secondary-color);
-  text-align: center;
-  padding: 40px;
-  border-top: 4px solid var(--primary-color);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-overlay h1 { font-size: 2.5rem; }
-  .section-container { padding: 60px 5%; }
-}
-
-/* Pastikan Container Utama Center */
-.container {
-    max-width: 1200px;
-    margin: 0 auto; /* Ini kunci agar container tidak miring ke kiri */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Mengetengahkan isi di dalamnya */
-}
-
-/* Memastikan Grid Anggota Rata Tengah */
-.kelompok-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 30px;
-    width: 100%;
-    justify-content: center; /* Mengetengahkan kartu jika jumlahnya sedikit */
-    justify-items: center;
-}
-
-/* Memastikan wrapper Laporan & Video Center */
+/* --- PDF & VIDEO --- */
 .content-wrapper, .video-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Mengetengahkan PDF dan Video */
-    text-align: center;
+    align-items: center;
 }
 
-/* Perbaikan khusus untuk Iframe agar tidak 'lari' */
 .pdf-container, .video-container {
-    margin: 0 auto; 
-    display: block;
+    width: 100%;
+    max-width: 900px;
+    height: 500px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+    background: #000;
+}
+
+.content-desc {
+    margin: 30px 0;
+    max-width: 600px;
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 60px 0;
+    background: white;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #999;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero-overlay h1 { font-size: 3rem; }
+    .pdf-container, .video-container { height: 350px; }
 }
