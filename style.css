@@ -1,0 +1,220 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com');
+
+:root {
+  --primary-color: #8b0000; /* Merah Marun - Kesan Berani & Sejarah */
+  --secondary-color: #d4af37; /* Emas - Kesan Klasik & Berharga */
+  --dark-text: #2c3e50;
+  --light-bg: #fdfaf5; /* Putih Tulang/Kertas Tua */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  scroll-behavior: smooth;
+}
+
+/* Navigasi Formal */
+header {
+  background: #fff;
+  border-bottom: 3px solid var(--primary-color);
+  padding: 1rem 5%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-text);
+  font-weight: 600;
+  margin-left: 25px;
+  transition: 0.3s;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Hero Section - Tema Kebangsaan */
+.hero-kelompok {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+              url('https://images.unsplash.com'); /* Gambar Gedung/Sejarah */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  border-bottom: 8px solid var(--secondary-color);
+}
+
+.hero-overlay h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.btn-cek {
+  display: inline-block;
+  padding: 12px 35px;
+  background: var(--primary-color);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.btn-cek:hover {
+  background: var(--secondary-color);
+  color: #000;
+}
+
+/* Container & Title */
+.section-container {
+  padding: 100px 10%;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: var(--primary-color);
+}
+
+/* Card Anggota - Gaya Klasik */
+.kelompok-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.kelompok-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0; /* Kotak lebih formal */
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.4s;
+  box-shadow: 5px 5px 0px var(--secondary-color); /* Shadow kaku yang artistik */
+}
+
+.kelompok-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 10px 10px 0px var(--primary-color);
+}
+
+.card-img img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  filter: sepia(30%); /* Efek foto lama sedikit */
+}
+
+.card-info {
+  padding: 15px;
+  border-top: 2px solid var(--secondary-color);
+}
+
+/* PDF & Video Container */
+.pdf-container, .video-container {
+  width: 100%;
+  max-width: 900px;
+  height: 550px;
+  border: 5px solid #fff;
+  outline: 2px solid var(--secondary-color);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.content-desc, .video-desc {
+  margin-top: 20px;
+  font-style: italic;
+  color: #666;
+}
+
+/* Footer Formal */
+footer {
+  background: #1a1a1a;
+  color: var(--secondary-color);
+  text-align: center;
+  padding: 40px;
+  border-top: 4px solid var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-overlay h1 { font-size: 2.5rem; }
+  .section-container { padding: 60px 5%; }
+}
+
+/* Pastikan Container Utama Center */
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Ini kunci agar container tidak miring ke kiri */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Mengetengahkan isi di dalamnya */
+}
+
+/* Memastikan Grid Anggota Rata Tengah */
+.kelompok-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    width: 100%;
+    justify-content: center; /* Mengetengahkan kartu jika jumlahnya sedikit */
+    justify-items: center;
+}
+
+/* Memastikan wrapper Laporan & Video Center */
+.content-wrapper, .video-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Mengetengahkan PDF dan Video */
+    text-align: center;
+}
+
+/* Perbaikan khusus untuk Iframe agar tidak 'lari' */
+.pdf-container, .video-container {
+    margin: 0 auto; 
+    display: block;
+}
