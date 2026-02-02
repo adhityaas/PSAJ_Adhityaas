@@ -1,10 +1,12 @@
-/* Import Font */
+/* Import Font Apple-ish */
 @import url('https://fonts.googleapis.com');
 
 :root {
     --glass: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.08);
     --ios-blue: #0071e3;
+    --text-main: #f5f5f7;
+    --text-sub: #a1a1a6;
 }
 
 * {
@@ -18,35 +20,43 @@ html {
     scroll-behavior: smooth;
 }
 
+/* --- BACKGROUND RUNNING GRADIENT --- */
 body {
     margin: 0;
     width: 100%;
     min-height: 100vh;
     color: #fff;
-    /* WARNA BACKGROUND RUNNING: Menggunakan 4 titik warna elegan */
-    background: linear-gradient(135deg, #050505, #0a0a20, #1a0a2e, #051a1a, #050505);
-    background-size: 400% 400%; /* Kunci agar warna bisa jalan */
-    animation: luxuryFlow 15s ease infinite; /* Pergerakan super smooth */
+    background: linear-gradient(
+        -45deg, 
+        #050505, 
+        #1a1a2e, 
+        #2d033b, 
+        #004d40, 
+        #050505
+    );
+    background-size: 400% 400%;
+    animation: ultimateRunning 15s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
     overflow-x: hidden;
 }
 
-/* Animasi Pergerakan Warna */
-@keyframes luxuryFlow {
+@keyframes ultimateRunning {
     0% { background-position: 0% 50%; }
+    25% { background-position: 50% 100%; }
     50% { background-position: 100% 50%; }
+    75% { background-position: 50% 0%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Navigasi Ultra-Glass iPhone */
+/* --- NAVIGATION (REVISI WARNA LOGO) --- */
 header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1.2rem 8%;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(30px) saturate(150%);
-    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    padding: 1.2rem 5%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
     border-bottom: 0.5px solid var(--glass-border);
 }
 
@@ -54,193 +64,179 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Logo disamakan dengan gaya Hero Section */
 .logo {
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     letter-spacing: -1px;
-    background: linear-gradient(to right, #fff, #888);
+    background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.2) 100%);
     -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Menghapus warna biru pada span agar menyatu dengan gradasi logo */
+.logo span {
     -webkit-text-fill-color: transparent;
 }
 
 .nav-links {
     display: flex;
-    gap: 35px;
+    gap: 25px;
+    list-style: none;
 }
 
 .nav-links a {
     text-decoration: none;
-    color: #a1a1a6;
+    color: var(--text-sub);
     font-size: 0.85rem;
-    transition: 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: 0.4s;
 }
 
-.nav-links a:hover {
-    color: #fff;
-    text-shadow: 0 0 15px rgba(255,255,255,0.3);
-}
+.nav-links a:hover { color: #fff; }
 
-/* Hero Section */
+/* --- HERO SECTION --- */
 .hero-kelompok {
     height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 0 20px;
 }
 
 .hero-overlay h1 {
-    font-size: clamp(3.5rem, 10vw, 6rem);
+    font-size: clamp(2.5rem, 8vw, 5rem);
     font-weight: 600;
-    letter-spacing: -3px;
-    margin-bottom: 15px;
-    background: linear-gradient(180deg, #fff 30%, rgba(255,255,255,0.1) 100%);
+    letter-spacing: -2px;
+    background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: fadeIn 2s ease;
+    margin-bottom: 10px;
 }
 
-/* Kartu Anggota Glassmorphism Pro */
+.hero-overlay p {
+    color: var(--text-sub);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* --- ANGGOTA GRID --- */
 .section-container {
-    padding: 100px 8%;
+    padding: 100px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+    font-weight: 600;
+    letter-spacing: -1px;
 }
 
 .kelompok-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    justify-content: center;
 }
 
 .kelompok-card {
     background: var(--glass);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
-    border-radius: 30px;
-    padding: 30px;
+    border-radius: 35px;
+    padding: 40px 20px;
     text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
     transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.kelompok-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
-    transform: translateX(-100%);
-    transition: 0.8s;
-}
-
-.kelompok-card:hover::before {
-    transform: translateX(100%);
 }
 
 .kelompok-card:hover {
     transform: scale(1.05) translateY(-10px);
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .card-img img {
-    width: 85px;
-    height: 85px;
-    border-radius: 22px; /* iOS Squircle */
+    width: 110px;
+    height: 110px;
+    border-radius: 28px;
+    object-fit: cover;
     margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .card-info h3 {
     color: #fff;
     font-size: 1.1rem;
-    font-weight: 600;
+    margin-bottom: 5px;
 }
 
 .card-info p {
-    color: #888;
+    color: var(--text-sub);
     font-size: 0.85rem;
 }
 
-/* Container Laporan & Video (Premium Shadow) */
+/* --- PDF & VIDEO CONTAINERS --- */
 .pdf-container, .video-container {
     width: 100%;
     height: 550px;
+    background: #000;
     border-radius: 35px;
     overflow: hidden;
     border: 1px solid var(--glass-border);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
-    background: #000;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
 }
 
-/* Tombol ala Apple Blue */
 .btn-cek {
-    padding: 15px 40px;
+    display: inline-block;
+    padding: 12px 35px;
     background: var(--ios-blue);
-    color: white;
+    color: #fff;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
+    margin-top: 20px;
     transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .btn-cek:hover {
+    box-shadow: 0 0 25px rgba(0, 113, 227, 0.6);
     transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(0, 113, 227, 0.5);
-    background: #007aff;
 }
 
-/* Footer */
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 768px) {
+    header { padding: 1rem 5%; }
+    .nav-links { display: none; } 
+    
+    .hero-overlay h1 { font-size: 2.8rem; }
+    
+    .section-container { padding: 60px 20px; }
+    
+    .kelompok-grid { grid-template-columns: 1fr; }
+
+    .pdf-container, .video-container {
+        height: 380px;
+        border-radius: 25px;
+    }
+}
+
+/* --- FOOTER --- */
 footer {
-    padding: 80px 0 40px;
+    padding: 60px 0;
     text-align: center;
-    opacity: 0.4;
+    border-top: 0.5px solid var(--glass-border);
+    color: var(--text-sub);
     font-size: 0.75rem;
-}
-
-/* Animasi Muncul */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-body {
-    margin: 0;
-    width: 100%;
-    min-height: 100vh;
-    color: #fff;
-    /* WARNA RUNNING: Gabungan Deep Navy, Royal Purple, Teal, dan Charcoal */
-    background: linear-gradient(
-        -45deg, 
-        #050505, /* Hitam Obsidian */
-        #1a1a2e, /* Midnight Blue */
-        #2d033b, /* Deep Purple */
-        #004d40, /* Dark Teal */
-        #050505
-    );
-    background-size: 400% 400%; /* Membesarkan gradasi agar bisa digeser jauh */
-    animation: ultimateRunning 15s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-    overflow-x: hidden;
-}
-
-/* Animasi Pergerakan Warna yang Lebih Dinamis */
-@keyframes ultimateRunning {
-    0% {
-        background-position: 0% 50%;
-    }
-    25% {
-        background-position: 50% 100%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    75% {
-        background-position: 50% 0%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
