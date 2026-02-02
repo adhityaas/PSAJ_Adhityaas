@@ -1,242 +1,288 @@
-/* Import Font Apple-ish */
-@import url('https://fonts.googleapis.com');
-
+/* =========================================
+   1. RESET & VARIABLE (TEMA MUSEUM GELAP)
+   ========================================= */
 :root {
-    --glass: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --ios-blue: #0071e3;
-    --text-main: #f5f5f7;
-    --text-sub: #a1a1a6;
+  --bg-dark: #0f0f0f;       /* Hitam Arang */
+  --bg-card: #1a1a1a;       /* Abu Gelap */
+  --gold: #c6a87c;          /* Emas Pudar (Vintage) */
+  --gold-glow: #e6c89c;     /* Emas Terang (Hover) */
+  --red-accent: #8a1c1c;    /* Merah Darah (Aksen) */
+  --text-main: #e0e0e0;     /* Putih Gading */
+  --text-muted: #888888;    /* Abu Pudar */
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
-/* --- BACKGROUND RUNNING GRADIENT --- */
 body {
-    margin: 0;
-    width: 100%;
-    min-height: 100vh;
-    color: #fff;
-    background: linear-gradient(
-        -45deg, 
-        #050505, 
-        #1a1a2e, 
-        #2d033b, 
-        #004d40, 
-        #050505
-    );
-    background-size: 400% 400%;
-    animation: ultimateRunning 15s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-    overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  text-align: center; /* Default rata tengah */
+  overflow-x: hidden;
 }
 
-@keyframes ultimateRunning {
-    0% { background-position: 0% 50%; }
-    25% { background-position: 50% 100%; }
-    50% { background-position: 100% 50%; }
-    75% { background-position: 50% 0%; }
-    100% { background-position: 0% 50%; }
+/* =========================================
+   2. UTILITIES & TYPOGRAPHY
+   ========================================= */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* --- NAVIGATION (REVISI WARNA LOGO) --- */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 1.2rem 5%;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border-bottom: 0.5px solid var(--glass-border);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Logo disamakan dengan gaya Hero Section */
-.logo {
-    font-weight: 600;
-    font-size: 1.3rem;
-    letter-spacing: -1px;
-    background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.2) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Menghapus warna biru pada span agar menyatu dengan gradasi logo */
-.logo span {
-    -webkit-text-fill-color: transparent;
-}
-
-.nav-links {
-    display: flex;
-    gap: 25px;
-    list-style: none;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-sub);
-    font-size: 0.85rem;
-    transition: 0.4s;
-}
-
-.nav-links a:hover { color: #fff; }
-
-/* --- HERO SECTION --- */
-.hero-kelompok {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-}
-
-.hero-overlay h1 {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    font-weight: 600;
-    letter-spacing: -2px;
-    background: linear-gradient(180deg, #fff 40%, rgba(255,255,255,0.1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-}
-
-.hero-overlay p {
-    color: var(--text-sub);
-    font-weight: 300;
-    letter-spacing: 0.5px;
-}
-
-/* --- ANGGOTA GRID --- */
 .section-container {
-    padding: 100px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(198, 168, 124, 0.1);
 }
 
 .section-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 50px;
-    font-weight: 600;
-    letter-spacing: -1px;
+  font-size: 2.2rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 50px;
+  position: relative;
+  display: inline-block;
 }
 
-.kelompok-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 30px;
-    justify-content: center;
+.section-title::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 3px;
+  background: var(--red-accent);
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
 }
 
-.kelompok-card {
-    background: var(--glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 35px;
-    padding: 40px 20px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    text-align: center;
-    transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.kelompok-card:hover {
-    transform: scale(1.05) translateY(-10px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.card-img img {
-    width: 110px;
-    height: 110px;
-    border-radius: 28px;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.card-info h3 {
-    color: #fff;
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-}
-
-.card-info p {
-    color: var(--text-sub);
-    font-size: 0.85rem;
-}
-
-/* --- PDF & VIDEO CONTAINERS --- */
-.pdf-container, .video-container {
-    width: 100%;
-    height: 550px;
-    background: #000;
-    border-radius: 35px;
-    overflow: hidden;
-    border: 1px solid var(--glass-border);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
-}
+.bg-white { background-color: #141414; }
+.bg-light { background-color: #0a0a0a; }
 
 .btn-cek {
-    display: inline-block;
-    padding: 12px 35px;
-    background: var(--ios-blue);
-    color: #fff;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    margin-top: 20px;
-    transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-block;
+  padding: 10px 30px;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: 0.4s;
+  margin-top: 20px;
+  border-radius: 2px;
 }
 
 .btn-cek:hover {
-    box-shadow: 0 0 25px rgba(0, 113, 227, 0.6);
-    transform: scale(1.1);
+  background: var(--gold);
+  color: #000;
+  box-shadow: 0 0 15px rgba(198, 168, 124, 0.5);
 }
 
-/* --- MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-    header { padding: 1rem 5%; }
-    .nav-links { display: none; } 
-    
-    .hero-overlay h1 { font-size: 2.8rem; }
-    
-    .section-container { padding: 60px 20px; }
-    
-    .kelompok-grid { grid-template-columns: 1fr; }
-
-    .pdf-container, .video-container {
-        height: 380px;
-        border-radius: 25px;
-    }
+/* =========================================
+   3. NAVIGATION (HEADER)
+   ========================================= */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(15, 15, 15, 0.95);
+  border-bottom: 1px solid #222;
+  padding: 15px 0;
+  backdrop-filter: blur(5px);
 }
 
-/* --- FOOTER --- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* =========================================
+   4. HERO SECTION (BERANDA)
+   ========================================= */
+.hero-kelompok {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at center, #1f1f1f 0%, #000000 100%);
+  padding: 0 20px;
+}
+
+.hero-overlay h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  /* Efek Teks Emas Gradasi */
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #bf953f);
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-overlay p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+/* =========================================
+   5. ANGGOTA KELOMPOK (GRID)
+   ========================================= */
+.kelompok-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+.kelompok-card {
+  background: var(--bg-card);
+  border: 1px solid #333;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-decoration: none;
+}
+
+.kelompok-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.card-img {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(60%) contrast(1.1);
+  transition: transform 0.5s, filter 0.5s;
+}
+
+.kelompok-card:hover .card-img img {
+  filter: sepia(0%);
+  transform: scale(1.1);
+}
+
+.card-info { padding: 20px; }
+.card-info h3 { font-size: 1.1rem; color: #fff; margin-bottom: 5px; }
+.card-info p { color: var(--gold); font-size: 0.9rem; }
+
+/* =========================================
+   6. MAKALAH (PDF)
+   ========================================= */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.pdf-container {
+  width: 100%;
+  max-width: 900px;
+  height: 500px;
+  border: 1px solid #333;
+  background: #222;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.content-desc { color: var(--text-muted); margin-top: 10px; }
+
+/* =========================================
+   7. VIDEO YOUTUBE (PERBAIKAN UTAMA)
+   ========================================= */
+.video-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #000;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* Rasio 16:9 */
+  height: 0;
+  overflow: hidden;
+  /* Hapus z-index container untuk hindari stacking error */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  /* Memastikan iframe menerima klik mouse */
+  pointer-events: auto; 
+  z-index: 10; 
+}
+
+.video-desc {
+  margin-top: 15px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* =========================================
+   8. FOOTER
+   ========================================= */
 footer {
-    padding: 60px 0;
-    text-align: center;
-    border-top: 0.5px solid var(--glass-border);
-    color: var(--text-sub);
-    font-size: 0.75rem;
+  padding: 40px 0;
+  background: #050505;
+  color: #555;
+  font-size: 0.8rem;
+  border-top: 1px solid #1a1a1a;
+}
+
+/* =========================================
+   9. RESPONSIVE (HP)
+   ========================================= */
+@media (max-width: 768px) {
+  nav { flex-direction: column; gap: 20px; }
+  .hero-overlay h1 { font-size: 2.5rem; }
+  .kelompok-grid { grid-template-columns: 1fr; padding: 0 30px; }
 }
